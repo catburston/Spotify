@@ -43,24 +43,29 @@ $('.btn-play').on('click', function(){
 	//add
 if (playing == false) {
 	$widget.find('#audio').trigger('play');
-//here
+
+	playing = true;
+
+		//while (playing == true) {
+
+			$widget.find('progress').attr('value', prgValue);
+
+			var value = setInterval(function(){
+
+				$widget.find('progress').attr('value', prgValue++);
+
+				console.log(prgValue);
+				console.log(audio.currentTime);
+
+
+			},progUnit); //playing = false;
+
+		//};
 	
-	$widget.find('progress').attr('value', prgValue);
-
-	var value = setInterval(function(){
-		//prgValue ++;
-		$widget.find('progress').attr('value', prgValue++);
-
-		
-
-		console.log(prgValue);
-
-
-	},progUnit);
 
 //to here
 
-	playing = true;
+	
 } else {
 	$widget.find('#audio').trigger('pause');
 	playing = false;
