@@ -36,11 +36,17 @@ $widget.find('#audio').attr('src', info.preview_url);
 
 
 //var sound= $widget.find('#audio');
-
+var playing = false;
 
 $('.btn-play').on('click', function(){
-
+	//add
+if (playing == false) {
 	$widget.find('#audio').trigger('play');
+	playing = true;
+} else {
+	$widget.find('#audio').trigger('pause');
+	playing = false;
+}
 });
 
 /*
