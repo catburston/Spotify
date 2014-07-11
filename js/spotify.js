@@ -34,13 +34,9 @@ $widget.find('.author').text(info.artists[0].name); //replace text of Author tag
 $widget.find('.cover img').attr('src', info.album.images[1].url);
 $widget.find('#audio').attr('src', info.preview_url);
 
-var prgValue = 0;
+var prgValue = 1;
 var songLength = info.duration_ms;
 var progUnit = songLength/30;
-
-
-
-
 var playing = false;
 
 $('.btn-play').on('click', function(){
@@ -48,15 +44,19 @@ $('.btn-play').on('click', function(){
 if (playing == false) {
 	$widget.find('#audio').trigger('play');
 //here
+	
+	$widget.find('progress').attr('value', prgValue);
 
-var value = setInterval(function(){
+	var value = setInterval(function(){
+		//prgValue ++;
+		$widget.find('progress').attr('value', prgValue++);
 
-$widget.find('progress').attr('value', prgValue);
-prgValue ++;
-console.log(prgValue);
+		
+
+		console.log(prgValue);
 
 
-},progUnit);
+	},progUnit);
 
 //to here
 
