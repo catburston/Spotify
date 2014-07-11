@@ -34,14 +34,32 @@ $widget.find('.author').text(info.artists[0].name); //replace text of Author tag
 $widget.find('.cover img').attr('src', info.album.images[1].url);
 $widget.find('#audio').attr('src', info.preview_url);
 
+var prgValue = 0;
+var songLength = info.duration_ms;
+var progUnit = songLength/30;
 
-//var sound= $widget.find('#audio');
+
+
+
 var playing = false;
 
 $('.btn-play').on('click', function(){
 	//add
 if (playing == false) {
 	$widget.find('#audio').trigger('play');
+//here
+
+var value = setInterval(function(){
+
+$widget.find('progress').attr('value', prgValue);
+prgValue ++;
+console.log(prgValue);
+
+
+},progUnit);
+
+//to here
+
 	playing = true;
 } else {
 	$widget.find('#audio').trigger('pause');
