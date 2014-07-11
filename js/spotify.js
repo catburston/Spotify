@@ -37,7 +37,53 @@ $widget.find('#audio').attr('src', info.preview_url);
 var prgValue = 1;
 var songLength = info.duration_ms;
 var progUnit = songLength/30;
+var savedTime = 0;
 var playing = false;
+
+
+var progressBar = function(){
+
+
+
+  if (audio.currentTime > (savedTime + progUnit)){
+
+  console.log(audio.currentTime+' '+savedTime+' '+progUnit)
+  $widget.find('progress').attr('value', prgValue++);
+  savedTime = audio.currentTime;
+ };
+  
+  //if(audio.currentTime>=songLength){playing=false};
+  //playing=false;
+
+};
+
+
+
+      var value = setInterval(function(){
+
+        DOES THIS
+      }
+
+      )
+
+/*PROGRESS
+
+      $widget.find('progress').attr('value', prgValue);
+
+      var value = setInterval(function(){
+
+        $widget.find('progress').attr('value', prgValue++);
+
+        console.log(prgValue);
+        console.log(audio.currentTime);
+
+
+      },progUnit); 
+
+//NO MORE PROGRESS*/
+
+
+
 
 $('.btn-play').on('click', function(){
 	//add
@@ -45,20 +91,10 @@ if (playing == false) {
 	$widget.find('#audio').trigger('play');
 
 	playing = true;
+  progressBar();
 
 		//while (playing == true) {
-
-			$widget.find('progress').attr('value', prgValue);
-
-			var value = setInterval(function(){
-
-				$widget.find('progress').attr('value', prgValue++);
-
-				console.log(prgValue);
-				console.log(audio.currentTime);
-
-
-			},progUnit); //playing = false;
+//playing = false;
 
 		//};
 	
@@ -66,7 +102,9 @@ if (playing == false) {
 //to here
 
 	
-} else {
+} 
+
+else {
 	$widget.find('#audio').trigger('pause');
 	playing = false;
 }
