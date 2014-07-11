@@ -1,4 +1,8 @@
 (function (global) {
+
+
+
+
   'use strict';
 
 var xhr = new XMLHttpRequest();
@@ -9,7 +13,23 @@ xhr.onload = function () {
      if (this.status === 200) { // the result is OK
        var response = JSON.parse(xhr.response);
        console.log('onload response', response);
+
+       handleResponse(response);
      }
    };
 
+xhr.send();
+
+var handleResponse = function(info){
+
+
+console.log(info.album.name);
+console.log(info.name);
+console.log(info.artists[0].name);
+
+}
+
 })(window);
+
+
+
