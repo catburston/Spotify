@@ -6,7 +6,7 @@
   'use strict';
 
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://api.spotify.com/v1/tracks/7Bxv0WL7UC6WwQpk9TzdMJ');
+xhr.open('GET', 'https://api.spotify.com/v1/tracks/0eGsygTp906u18L0Oimnem');
 xhr.setRequestHeader('Accept', 'application/json');
 
 xhr.onload = function () {
@@ -26,6 +26,12 @@ var handleResponse = function(info){
 console.log(info.album.name);
 console.log(info.name);
 console.log(info.artists[0].name);
+console.log(info.album.images[0].url);
+
+var $widget = $('.widget');
+$widget.find('.title').text(info.name); //replace text of Title tag with Song Title
+$widget.find('.author').text(info.artists[0].name); //replace text of Author tag with Author name
+$widget.find('.cover img').attr('src', info.album.images[1].url);
 
 }
 
