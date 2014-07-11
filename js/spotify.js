@@ -32,6 +32,20 @@ var $widget = $('.widget');
 $widget.find('.title').text(info.name); //replace text of Title tag with Song Title
 $widget.find('.author').text(info.artists[0].name); //replace text of Author tag with Author name
 $widget.find('.cover img').attr('src', info.album.images[1].url);
+$widget.find('#audio').attr('src', info.preview_url);
+
+
+//var sound= $widget.find('#audio');
+
+
+$('.btn-play').on('click', function(){
+
+	$widget.find('#audio').trigger('play');
+});
+
+/*
+$widget.on('click','.btn-play', sound.play())*/
+
 
 }
 
