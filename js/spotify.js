@@ -34,36 +34,15 @@ $widget.find('.author').text(info.artists[0].name); //replace text of Author tag
 $widget.find('.cover img').attr('src', info.album.images[1].url);
 $widget.find('#audio').attr('src', info.preview_url);
 
-var prgValue = 1;
-var songLength = info.duration_ms;
-var progUnit = songLength/30;
 var playing = false;
 
+
 $('.btn-play').on('click', function(){
-	//add
+
 if (playing == false) {
 	$widget.find('#audio').trigger('play');
 
 	playing = true;
-
-		//while (playing == true) {
-
-			$widget.find('progress').attr('value', prgValue);
-
-			var value = setInterval(function(){
-
-				$widget.find('progress').attr('value', prgValue++);
-
-				console.log(prgValue);
-				console.log(audio.currentTime);
-
-
-			},progUnit); //playing = false;
-
-		//};
-	
-
-//to here
 
 	
 } else {
@@ -72,8 +51,7 @@ if (playing == false) {
 }
 });
 
-/*
-$widget.on('click','.btn-play', sound.play())*/
+
 
 
 }
@@ -82,3 +60,8 @@ $widget.on('click','.btn-play', sound.play())*/
 
 
 
+//KEEPING FOR LATER
+//var prgValue = 1;
+//var songLength = info.duration_ms;
+//var progUnit = songLength/30;
+//console.log(audio.currentTime);
